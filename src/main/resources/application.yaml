@@ -13,9 +13,14 @@ spring:
           username: "${spring-cloud-server-git-username}"
           password: "${spring-cloud-server-git-password}"
 
+ead:
+  serviceRegistry:
+    username: "${ead-service-registry-username}"
+    password: "${ead-service-registry-password}"
+
 eureka:
   client:
     serviceUrl:
-      defaultZone: "http://localhost:8761/eureka"
+      defaultZone: 'http://${ead.serviceRegistry.username}:${ead.serviceRegistry.password}@localhost:8761/eureka'
   instance:
     hostname: localhost
